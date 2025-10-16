@@ -1,0 +1,248 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bi-predictive-analytics-platform"
+version = "1.0.0"
+description = "End-to-End Business Intelligence Dashboard with Predictive & Prescriptive Analytics"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+maintainers = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = [
+    "business intelligence",
+    "predictive analytics", 
+    "prescriptive analytics",
+    "machine learning",
+    "dashboard",
+    "fastapi",
+    "plotly",
+    "time series",
+    "anomaly detection",
+    "forecasting"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Framework :: FastAPI",
+    "Framework :: Dash",
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi[all]>=0.104.1",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pandas>=2.1.4",
+    "numpy>=1.25.2",
+    "scikit-learn>=1.3.2",
+    "plotly>=5.17.0",
+    "dash>=2.16.1",
+    "sqlalchemy[asyncio]>=2.0.23",
+    "asyncpg>=0.29.0",
+    "alembic>=1.13.1",
+    "redis>=5.0.1",
+    "prophet>=1.1.5",
+    "xgboost>=2.0.3",
+    "tensorflow>=2.15.0",
+    "shap>=0.44.0",
+    "slack-sdk>=3.26.1",
+    "python-telegram-bot>=20.8",
+    "sendgrid>=6.11.0",
+    "apache-airflow>=2.8.0",
+    "prometheus-client>=0.19.0",
+    "structlog>=23.2.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.3",
+    "pytest-asyncio>=0.21.1",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+    "black>=23.12.0",
+    "flake8>=6.1.0",
+    "isort>=5.13.2",
+    "mypy>=1.8.0",
+    "bandit>=1.7.5",
+    "safety>=2.3.5",
+    "pre-commit>=3.6.0",
+    "ipython>=8.18.1",
+    "jupyter>=1.0.0",
+    "factory-boy>=3.3.0",
+    "httpx>=0.25.2"
+]
+docs = [
+    "mkdocs>=1.5.3",
+    "mkdocs-material>=9.5.2",
+    "mkdocs-mermaid2-plugin>=1.1.1",
+    "sphinx>=7.2.6",
+    "sphinx-rtd-theme>=2.0.0"
+]
+ml = [
+    "torch>=2.1.2",
+    "transformers>=4.36.2",
+    "spacy>=3.7.2",
+    "lightgbm>=4.1.0",
+    "optuna>=3.5.0",
+    "mlflow>=2.9.2",
+    "wandb>=0.16.1"
+]
+cloud = [
+    "boto3>=1.34.0",
+    "azure-storage-blob>=12.19.0",
+    "google-cloud-storage>=2.10.0"
+]
+monitoring = [
+    "prometheus-client>=0.19.0",
+    "grafana-api>=1.0.3",
+    "elastic-apm>=6.20.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/bi-predictive-analytics-platform"
+Documentation = "https://github.com/yourusername/bi-predictive-analytics-platform/docs"
+Repository = "https://github.com/yourusername/bi-predictive-analytics-platform"
+"Bug Tracker" = "https://github.com/yourusername/bi-predictive-analytics-platform/issues"
+Changelog = "https://github.com/yourusername/bi-predictive-analytics-platform/releases"
+
+[project.scripts]
+bi-platform = "src.main:main"
+bi-dashboard = "src.dashboard.app:main"
+bi-train = "scripts.train_models:main"
+bi-migrate = "scripts.migrate:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.yml", "*.json", "*.sql", "*.md"]
+
+# Black configuration
+[tool.black]
+line-length = 100
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
+
+# isort configuration
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 100
+known_first_party = ["src", "tests"]
+known_third_party = ["fastapi", "pandas", "numpy", "plotly", "dash", "prophet"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+# MyPy configuration
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = [
+    "prophet.*",
+    "dash.*",
+    "plotly.*",
+    "sklearn.*",
+    "tensorflow.*",
+    "airflow.*"
+]
+ignore_missing_imports = true
+
+# Pytest configuration
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers --strict-config"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+    "api: marks tests as API tests",
+    "ml: marks tests as machine learning tests"
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning"
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/migrations/*",
+    "*/venv/*",
+    "*/env/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod"
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+# Bandit security linting
+[tool.bandit]
+exclude_dirs = ["tests", "migrations"]
+skips = ["B101", "B601"]
+
+# Flake8 configuration would go in setup.cfg or .flake8 file
+# as it doesn't support pyproject.toml yet
