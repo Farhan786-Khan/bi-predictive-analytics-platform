@@ -1,0 +1,55 @@
+# Python environments
+.venv/
+env/
+venv/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter & notebooks
+.ipynb_checkpoints/
+notebooks/**/*.ipynb_checkpoints/
+*.ipynb
+*.bak
+
+# Data & models
+data/processed/
+data/interim/
+data/external/
+models/
+*.csv
+*.h5
+*.pkl
+*.joblib
+*.db
+
+# Credentials and configs
+.env
+.env.*
+*.key
+*.pem
+
+# Logs & outputs
+logs/
+*.log
+mlruns/
+wandb/
+
+# OS & IDE
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*.~undo-tree*
+*.parquet
+*.feather
+outputs/
+artifacts/
+checkpoints/
+*.parquet
+*.feather
+outputs/
+artifacts/
+checkpoints/
