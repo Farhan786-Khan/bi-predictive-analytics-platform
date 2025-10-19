@@ -5,16 +5,16 @@
 [![GitHub Issues](https://img.shields.io/github/issues/Farhan786-Khan/bi-predictive-analytics-platform.svg)](https://github.com/Farhan786-Khan/bi-predictive-analytics-platform/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/Farhan786-Khan/bi-predictive-analytics-platform.svg)](https://github.com/Farhan786-Khan/bi-predictive-analytics-platform/stargazers)
 
-## 📖 Overview
+## Overview
 
 The BI Predictive Analytics Platform is a comprehensive business intelligence solution that combines data engineering, machine learning, and visualization to deliver actionable insights. This platform enables organizations to harness their data for predictive modeling, trend analysis, and strategic decision-making.
 
 **Key Features:**
-- 🔄 Automated data pipeline for ETL processes
-- 🤖 Machine learning models for predictive analytics
-- 📊 Interactive dashboards and visualizations
-- 🔒 Secure data handling and processing
-- 📈 Real-time analytics and monitoring
+- Automated data pipeline for ETL processes
+- Machine learning models for predictive analytics
+- Interactive dashboards and visualizations
+- Secure data handling and processing
+- Real-time analytics and monitoring
 
 ## 🎯 Business Impact
 
@@ -24,7 +24,7 @@ This platform addresses critical business challenges by:
 - **Cost Optimization**: Identifying inefficiencies and optimization opportunities
 - **Risk Mitigation**: Early warning systems for potential issues
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ├── Data Sources → ETL Pipeline → ML Models → Visualization Layer
@@ -32,7 +32,7 @@ This platform addresses critical business challenges by:
 └── Business Intelligence Dashboard ← Analytics Engine
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.8+
@@ -77,7 +77,7 @@ This platform addresses critical business challenges by:
 
 Visit `http://localhost:8000` to access the dashboard.
 
-## 📊 Data Sources
+## Data Sources
 
 The platform integrates with multiple data sources:
 
@@ -88,7 +88,7 @@ The platform integrates with multiple data sources:
 | Financial Data | API | Revenue, costs, and financial metrics |
 | External APIs | REST/GraphQL | Market data and economic indicators |
 
-## 🤖 Machine Learning Models
+## Machine Learning Models
 
 ### Current Models
 
@@ -96,7 +96,7 @@ The platform integrates with multiple data sources:
 |-------|---------|----------|---------|
 | Sales Forecasting | Predict future sales trends | 87% | ✅ Production |
 | Customer Churn | Identify at-risk customers | 82% | ✅ Production |
-| Price Optimization | Optimize pricing strategy | 79% | 🧪 Testing |
+| Price Optimization | Optimize pricing strategy | 79% | Testing |
 | Demand Prediction | Forecast product demand | 84% | ✅ Production |
 
 ### Model Training
@@ -122,7 +122,7 @@ The platform tracks essential business metrics:
 - **Conversion Rates**: Sales funnel optimization
 - **Operational Efficiency**: Cost reduction opportunities
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -240,7 +240,7 @@ dashboard.add_kpi("revenue", value=150000, target=200000)
 dashboard.serve(port=8000)
 ```
 
-## 🧪 Testing
+## Testing
 
 Run the test suite:
 
@@ -259,7 +259,7 @@ pytest --cov=src tests/
 pytest tests/performance/ -v
 ```
 
-## 📋 API Documentation
+## API Documentation
 
 ### Authentication
 All API endpoints require authentication:
@@ -284,7 +284,7 @@ curl -X POST "http://localhost:8000/api/v1/predictions" \\
      -d '{"model": "sales_forecasting", "data": {...}}'
 ```
 
-## 📊 Performance Benchmarks
+## Performance Benchmarks
 
 | Operation | Average Time | Throughput |
 |-----------|--------------|------------|
@@ -293,7 +293,7 @@ curl -X POST "http://localhost:8000/api/v1/predictions" \\
 | Dashboard Load | 1.2s | - |
 | Report Generation | 8.5s | - |
 
-## 🚀 Deployment
+## Deployment
 
 ### Docker Deployment
 ```bash
@@ -313,7 +313,7 @@ python scripts/deploy.py --environment production
 curl http://your-domain.com/health
 ```
 
-## 📈 Roadmap
+## Roadmap
 
 ### Upcoming Features
 - [ ] **Real-time Streaming**: Apache Kafka integration
@@ -333,17 +333,17 @@ curl http://your-domain.com/health
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🏆 Acknowledgments
+## Acknowledgments
 
 - Thanks to the open-source community for excellent libraries
 - Special thanks to contributors and beta testers
 - Inspired by modern BI platforms and best practices
 
-## 📞 Support
-- **Issues**: [GitHub Issues](https://github.com/Farhan786-Khan/bi-predictive-analytics-platform/issues)
+## Support
+- **Issues**: [Farhan Khan](https://github.com/Farhan786-Khan/bi-predictive-analytics-platform/issues)
 - **Email**: mfk78686@gmail.com
 
-## 📊 Repository Statistics
+## Repository Statistics
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/Farhan786-Khan/bi-predictive-analytics-platform)
 ![GitHub contributors](https://img.shields.io/github/contributors/Farhan786-Khan/bi-predictive-analytics-platform)
