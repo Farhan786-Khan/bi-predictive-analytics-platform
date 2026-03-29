@@ -1,357 +1,183 @@
 # BI Predictive Analytics Platform
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub Issues](https://img.shields.io/github/issues/Farhan786-Khan/bi-predictive-analytics-platform.svg)](https://github.com/Farhan786-Khan/bi-predictive-analytics-platform/issues)
-[![GitHub Stars](https://img.shields.io/github/stars/Farhan786-Khan/bi-predictive-analytics-platform.svg)](https://github.com/Farhan786-Khan/bi-predictive-analytics-platform/stargazers)
+> **Customer Churn Intelligence · Multi-Model ML Pipeline · Interactive BI Dashboard**
 
-## Overview
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3+-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
+[![XGBoost](https://img.shields.io/badge/XGBoost-2.0+-EC4E1D?style=flat-square)](https://xgboost.readthedocs.io)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-The BI Predictive Analytics Platform is a comprehensive business intelligence solution that combines data engineering, machine learning, and visualization to deliver actionable insights. This platform enables organizations to harness their data for predictive modeling, trend analysis, and strategic decision-making.
+---
 
-**Key Features:**
-- Automated data pipeline for ETL processes
-- Machine learning models for predictive analytics
-- Interactive dashboards and visualizations
-- Secure data handling and processing
-- Real-time analytics and monitoring
+## What This Is
 
-## 🎯 Business Impact
+A **production-grade Business Intelligence platform** combining predictive machine learning with interactive analytics dashboards. Built around **customer churn prediction** — which costs companies billions annually and is a top use case in enterprise AI.
 
-This platform addresses critical business challenges by:
-- **Reducing Decision Time**: From weeks to hours with automated insights
-- **Improving Accuracy**: ML-driven predictions with 85%+ accuracy
-- **Cost Optimization**: Identifying inefficiencies and optimization opportunities
-- **Risk Mitigation**: Early warning systems for potential issues
+This platform demonstrates the full ML engineering lifecycle:
+
+```
+Raw Data -> EDA -> Feature Engineering -> Multi-Model Training -> Evaluation -> Dashboard -> Business Impact
+```
+
+---
+
+## Key Results
+
+| Model | F1-Score | ROC-AUC | Accuracy |
+|---|---|---|---|
+| **Random Forest** | **~0.79** | **~0.88** | **~0.83** |
+| XGBoost | ~0.78 | ~0.87 | ~0.82 |
+| Gradient Boosting | ~0.76 | ~0.86 | ~0.81 |
+| Logistic Regression | ~0.70 | ~0.81 | ~0.76 |
+
+> *Results on 5,000-row synthetic dataset with stratified 5-fold CV.*
+
+---
 
 ## Architecture
 
 ```
-├── Data Sources → ETL Pipeline → ML Models → Visualization Layer
-│                                      ↓
-└── Business Intelligence Dashboard ← Analytics Engine
-```
-
-## Quick Start
-
-### Prerequisites
-- Python 3.8+
-- Docker (optional)
-- PostgreSQL/MySQL database
-- 4GB+ RAM recommended
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Farhan786-Khan/bi-predictive-analytics-platform.git
-   cd bi-predictive-analytics-platform
-   ```
-
-2. **Set up virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\\Scripts\\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure environment**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your database credentials and API keys
-   ```
-
-5. **Initialize database**
-   ```bash
-   python scripts/setup_database.py
-   ```
-
-6. **Run the application**
-   ```bash
-   python src/main.py
-   ```
-
-Visit `http://localhost:8000` to access the dashboard.
-
-## Data Sources
-
-The platform integrates with multiple data sources:
-
-| Source Type | Format | Description |
-|-------------|---------|-------------|
-| Sales Data | CSV/JSON | Historical sales transactions |
-| Customer Data | Database | Customer demographics and behavior |
-| Financial Data | API | Revenue, costs, and financial metrics |
-| External APIs | REST/GraphQL | Market data and economic indicators |
-
-## Machine Learning Models
-
-### Current Models
-
-| Model | Purpose | Accuracy | Status |
-|-------|---------|----------|---------|
-| Sales Forecasting | Predict future sales trends | 87% | ✅ Production |
-| Customer Churn | Identify at-risk customers | 82% | ✅ Production |
-| Price Optimization | Optimize pricing strategy | 79% | Testing |
-| Demand Prediction | Forecast product demand | 84% | ✅ Production |
-
-### Model Training
-
-```bash
-# Train all models
-python scripts/train_models.py --all
-
-# Train specific model
-python scripts/train_models.py --model sales_forecasting
-
-# Evaluate model performance
-python scripts/evaluate_model.py --model customer_churn
-```
-
-## 📈 Key Metrics & KPIs
-
-The platform tracks essential business metrics:
-
-- **Revenue Growth**: Month-over-month revenue trends
-- **Customer Lifetime Value**: Predicted CLV using ML models
-- **Churn Rate**: Customer retention analytics
-- **Conversion Rates**: Sales funnel optimization
-- **Operational Efficiency**: Cost reduction opportunities
-
-## Configuration
-
-### Environment Variables
-
-Create a `.env` file with the following variables:
-
-```env
-# Database Configuration
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=bi_analytics
-DB_USER=your_username
-DB_PASSWORD=your_password
-
-# API Keys
-OPENAI_API_KEY=your_openai_key
-STRIPE_API_KEY=your_stripe_key
-
-# Application Settings
-DEBUG=False
-LOG_LEVEL=INFO
-SECRET_KEY=your_secret_key
-```
-
-### Model Configuration
-
-Models can be configured in `config/models.yaml`:
-
-```yaml
-sales_forecasting:
-  algorithm: "random_forest"
-  features: ["seasonality", "promotions", "external_factors"]
-  hyperparameters:
-    n_estimators: 100
-    max_depth: 10
-    random_state: 42
-```
-
-## 📁 Project Structure
-
-```
 bi-predictive-analytics-platform/
-├── data/
-│   ├── raw/                    # Original, immutable data
-│   ├── processed/              # Cleaned and transformed data
-│   ├── external/               # Third-party data sources
-│   └── interim/                # Intermediate data transformations
-├── src/
-│   ├── data_pipeline/          # ETL and data processing
-│   ├── models/                 # ML model definitions
-│   ├── visualization/          # Dashboard and plotting code
-│   ├── api/                    # REST API endpoints
-│   └── utils/                  # Utility functions
-├── notebooks/
-│   ├── exploratory/            # Data exploration
-│   ├── modeling/               # Model development
-│   └── analysis/               # Business analysis
-├── tests/
-│   ├── unit/                   # Unit tests
-│   ├── integration/            # Integration tests
-│   └── fixtures/               # Test data
-├── scripts/
-│   ├── setup_database.py       # Database initialization
-│   ├── train_models.py         # Model training pipeline
-│   └── deploy.py               # Deployment scripts
-├── config/
-│   ├── models.yaml             # Model configurations
-│   ├── database.yaml           # Database settings
-│   └── logging.yaml            # Logging configuration
-├── docs/
-│   ├── api/                    # API documentation
-│   ├── user_guide/             # User documentation
-│   └── technical/              # Technical specifications
-└── docker/                     # Docker configurations
+|
++-- src/                          # Core source modules
+|   +-- api/                      # FastAPI REST endpoints
+|   +-- data_pipeline/
+|   |   +-- data_loader.py        # Multi-format ingestion + data profiling
+|   |   +-- preprocessor.py      # Feature engineering + sklearn pipeline
+|   +-- models/
+|   |   +-- classification_models.py  # RF, XGBoost, LightGBM, LogReg suite
+|   |   +-- evaluator.py         # Metrics, ROC, confusion matrix, business impact
+|   |   +-- prophet-model.py     # Time-series forecasting (Prophet)
+|   +-- visualization/
+|   |   +-- plotly_charts.py     # Interactive Plotly dark-theme charts
+|   +-- utils/
+|   +-- main.py                  # FastAPI app entry point
+|
++-- dashboard/
+|   +-- app.py                   # 5-page Streamlit BI dashboard
+|
++-- config/                      # Environment configs
++-- docs/                        # Documentation
++-- scripts/                     # Utility scripts
++-- Dockerfile
++-- docker-compose.yml
++-- pyproject.toml
++-- requirements.txt
 ```
-
-## ⚡ Usage Examples
-
-### Data Pipeline
-```python
-from src.data_pipeline import DataPipeline
-
-# Initialize pipeline
-pipeline = DataPipeline(config_path="config/pipeline.yaml")
-
-# Run ETL process
-pipeline.extract_data(source="sales_db")
-pipeline.transform_data(apply_filters=True)
-pipeline.load_data(destination="analytics_db")
-```
-
-### Model Prediction
-```python
-from src.models import SalesForecastingModel
-
-# Load trained model
-model = SalesForecastingModel.load("models/sales_forecasting_v1.pkl")
-
-# Make predictions
-predictions = model.predict(data=new_sales_data)
-print(f"Predicted sales: ${predictions[0]:,.2f}")
-```
-
-### Dashboard Integration
-```python
-from src.visualization import Dashboard
-
-# Create dashboard
-dashboard = Dashboard(config="config/dashboard.yaml")
-
-# Add widgets
-dashboard.add_chart("sales_trend", chart_type="line")
-dashboard.add_kpi("revenue", value=150000, target=200000)
-
-# Launch dashboard
-dashboard.serve(port=8000)
-```
-
-## Testing
-
-Run the test suite:
-
-```bash
-# Run all tests
-pytest
-
-# Run specific test category
-pytest tests/unit/
-pytest tests/integration/
-
-# Run with coverage
-pytest --cov=src tests/
-
-# Run performance tests
-pytest tests/performance/ -v
-```
-
-## API Documentation
-
-### Authentication
-All API endpoints require authentication:
-```bash
-curl -H "Authorization: Bearer YOUR_API_TOKEN" \\
-     https://api.yourplatform.com/v1/predictions
-```
-
-### Key Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/v1/predictions` | POST | Generate ML predictions |
-| `/api/v1/metrics` | GET | Retrieve KPI metrics |
-| `/api/v1/data/upload` | POST | Upload new data |
-| `/api/v1/models/retrain` | POST | Trigger model retraining |
-
-**Example Request:**
-```bash
-curl -X POST "http://localhost:8000/api/v1/predictions" \\
-     -H "Content-Type: application/json" \\
-     -d '{"model": "sales_forecasting", "data": {...}}'
-```
-
-## Performance Benchmarks
-
-| Operation | Average Time | Throughput |
-|-----------|--------------|------------|
-| Data Ingestion | 2.3s per 10K records | 4.3K records/s |
-| Model Prediction | 45ms per request | 22 requests/s |
-| Dashboard Load | 1.2s | - |
-| Report Generation | 8.5s | - |
-
-## Deployment
-
-### Docker Deployment
-```bash
-# Build image
-docker build -t bi-analytics-platform .
-
-# Run container
-docker run -p 8000:8000 -e DB_HOST=your_db_host bi-analytics-platform
-```
-
-### Production Deployment
-```bash
-# Deploy to production
-python scripts/deploy.py --environment production
-
-# Health check
-curl http://your-domain.com/health
-```
-
-## Roadmap
-
-### Upcoming Features
-- [ ] **Real-time Streaming**: Apache Kafka integration
-- [ ] **Advanced ML**: Deep learning models
-- [ ] **Multi-tenant**: Enterprise-grade multi-tenancy
-- [ ] **Mobile App**: React Native mobile dashboard
-- [ ] **AI Assistant**: Natural language query interface
-
-### Completed Features
-- [x] Basic ETL pipeline
-- [x] ML model training
-- [x] Web dashboard
-- [x] REST API
-- [x] Docker containerization
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Thanks to the open-source community for excellent libraries
-- Special thanks to contributors and beta testers
-- Inspired by modern BI platforms and best practices
-
-## Support
-- **Issues**: [Farhan Khan](https://github.com/Farhan786-Khan/bi-predictive-analytics-platform/issues)
-- **Email**: mfk78686@gmail.com
-
-## Repository Statistics
-
-![GitHub repo size](https://img.shields.io/github/repo-size/Farhan786-Khan/bi-predictive-analytics-platform)
-![GitHub contributors](https://img.shields.io/github/contributors/Farhan786-Khan/bi-predictive-analytics-platform)
-![GitHub last commit](https://img.shields.io/github/last-commit/Farhan786-Khan/bi-predictive-analytics-platform)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Farhan786-Khan/bi-predictive-analytics-platform)
 
 ---
 
-**Made with ❤️ by [Farhan Khan](https://github.com/Farhan786-Khan)**
+## Quick Start
 
-*Transforming data into actionable business insights*
+```bash
+# 1. Clone the repo
+git clone https://github.com/Farhan786-Khan/bi-predictive-analytics-platform.git
+cd bi-predictive-analytics-platform
+
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate     # Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Launch the interactive Streamlit dashboard
+streamlit run dashboard/app.py
+
+# 5. OR run the FastAPI backend
+uvicorn src.main:app --reload
+```
+
+---
+
+## Dashboard Pages
+
+| Page | What It Shows |
+|------|--------------|
+| **Overview** | Dataset KPIs, data preview, feature summary |
+| **EDA** | 5 interactive Plotly charts: churn dist, tenure violin, charges scatter, contract heatmap, satisfaction bar |
+| **Models** | Live training, leaderboard, CV results, model comparison chart |
+| **Predict** | Single customer churn predictor with gauge chart |
+| **Business Impact** | Revenue saved, retention ROI, at-risk revenue calculator (INR) |
+
+---
+
+## ML Engineering Highlights
+
+**Feature Engineering** (`src/data_pipeline/preprocessor.py`)
+- Derived features: `avg_monthly_spend`, `support_call_rate`, `engagement_score`, `charge_variance`
+- Sklearn-compatible `TransformerMixin` for pipeline integration
+- Stratified train/test split preserving class balance
+
+**Multi-Model Suite** (`src/models/classification_models.py`)
+- 4 models with unified interface: Logistic Regression, Random Forest, XGBoost, LightGBM
+- 5-fold Stratified Cross Validation on F1, ROC-AUC, Accuracy
+- Model persistence with `joblib` + `best_model()` selector
+
+**Time-Series Forecasting** (`src/models/prophet-model.py`)
+- Meta Prophet with multiplicative seasonality
+- Hyperparameter tuning and cross-validation
+- Churn trend forecasting over time
+
+**Business Impact Quantification** (`src/models/evaluator.py`)
+- Translates model metrics into INR revenue saved / at risk
+- Configurable customer value and retention campaign cost
+- False alarm vs missed churn cost trade-off analysis
+
+**REST API** (`src/main.py`)
+- FastAPI backend with Prometheus monitoring
+- Endpoints: /predict, /anomaly, /prescriptive, /dashboard
+- Docker + docker-compose for easy deployment
+
+---
+
+## Customise for Your Data
+
+```python
+from src.data_pipeline.data_loader import DataLoader
+from src.data_pipeline.preprocessor import Preprocessor
+from src.models.classification_models import ModelSuite
+
+loader = DataLoader()
+df = loader.load("your_data.csv")
+
+preprocessor = Preprocessor(target_col="your_churn_column")
+X_train, X_test, y_train, y_test = preprocessor.fit_transform(df)
+
+suite = ModelSuite()
+suite.train_all(X_train, y_train)
+print("Best model:", suite.best_model("f1"))
+```
+
+---
+
+## Roadmap
+
+- [x] Multi-model classification suite (RF, XGBoost, LightGBM, LogReg)
+- [x] Prophet time-series forecasting
+- [x] FastAPI REST backend with Prometheus monitoring
+- [x] 5-page Streamlit interactive dashboard
+- [x] Docker + docker-compose deployment
+- [ ] SHAP values for model explainability
+- [ ] Hyperparameter tuning with Optuna
+- [ ] Real-time data ingestion from SQL / Kafka
+- [ ] Automated HTML report generation
+
+---
+
+## Author
+
+**Mohammed Farhan Khan**
+*AI/ML Engineer · Data Scientist · Bengaluru, India*
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/mohammed-farhan-55976920b)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github)](https://github.com/Farhan786-Khan)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:mfk78686@gmail.com)
+
+---
+
+## License
+
+MIT License — free to use, modify, and distribute with attribution.
